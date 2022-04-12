@@ -26,19 +26,19 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import codePush from 'react-native-code-push';
+// import codePush from 'react-native-code-push';
 
 import Realm from 'realm';
 
-const realm = Realm.open({
-  schema: [
-    {
-      name: 'Test',
-      properties: {
-        name: 'string',
-      },
-    },
-  ],
+const TestSchema = {
+  name: 'Test',
+  properties: {
+    name: 'string',
+  },
+};
+
+const realm = new Realm({
+  schema: [TestSchema],
 });
 
 realm.write(() => {
@@ -130,4 +130,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default codePush(App);
+export default App;
+// export default codePush(App);
